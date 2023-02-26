@@ -1,3 +1,5 @@
+import matplotlib.pyplot as plt
+
 def realInput(n = 1):
     uIn = list(input().split())
     # validate input amount
@@ -14,6 +16,7 @@ def realInput(n = 1):
                 return None
         # if all input(s) valid, return list of numbers
         return uIn
+# end function
 
 
 def realInput(n = 1):
@@ -32,3 +35,22 @@ def realInput(n = 1):
                 return None
         # if all input(s) valid, return list of numbers
         return uIn
+# end function
+    
+def plotPoints(Points, Point1, Point2):
+    fig = plt.figure()
+    ax = fig.add_subplot(projection = '3d')
+
+    for point in Points:
+        if(point == Point1 or point == Point2):
+            symbol = '^'
+        else:
+            symbol = 'o'
+        ax.scatter(point[0], point[1], point[2], marker=symbol)
+
+    ax.set_xlabel('X')
+    ax.set_ylabel('Y')
+    ax.set_zlabel('Z')
+
+    plt.show()
+# end function
