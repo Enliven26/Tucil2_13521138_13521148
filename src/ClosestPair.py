@@ -36,11 +36,8 @@ def findNearestMid(points, mid, minDistance):
     for i in range(size - 1):
         for j in range(i + 1, size):
 
-            if (abs(midPoints[i][0] - midPoints[j][0]) >= minDistance):
+            if (not(p.isInRange(midPoints[i], midPoints[j], result[0]))): #NEED IMPROVEMENT
                 continue
-
-            if (not(p.isInRange(midPoints[i], midPoints[j], minDistance))):
-                break
             
             tempDistance = p.getDistance(midPoints[i], midPoints[j])
 
