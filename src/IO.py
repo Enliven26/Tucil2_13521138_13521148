@@ -36,8 +36,9 @@ def realInput(n = 1):
         # if all input(s) valid, return list of numbers
         return uIn
 # end function
-    
-def plotPoints(Points, Point1, Point2):
+
+
+def plot3DPoints(Points, Point1, Point2):
     fig = plt.figure()
     ax = fig.add_subplot(projection = '3d')
 
@@ -56,6 +57,28 @@ def plotPoints(Points, Point1, Point2):
     ax.set_xlabel('X')
     ax.set_ylabel('Y')
     ax.set_zlabel('Z')
+
+    plt.show()
+# end function
+
+def plot2DPoints(Points, Point1, Point2):
+    # fig = plt.figure()
+    # ax = fig.add_subplot(projection = '2d')
+
+    for point in Points:
+        if(point == Point1):
+            symbol = '^'
+            color = '#ff0000'
+        elif(point == Point2):
+            symbol = '^'
+            color = '#ffa500'
+        else:
+            symbol = 'o'
+            color = '#7fdcfa'
+        plt.scatter(point[0], point[1], marker=symbol, color=color)
+
+    plt.xlabel('X')
+    plt.ylabel('Y')
 
     plt.show()
 # end function
