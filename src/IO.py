@@ -42,11 +42,16 @@ def plotPoints(Points, Point1, Point2):
     ax = fig.add_subplot(projection = '3d')
 
     for point in Points:
-        if(point == Point1 or point == Point2):
+        if(point == Point1):
             symbol = '^'
+            color = '#ff0000'
+        elif(point == Point2):
+            symbol = '^'
+            color = '#ffa500'
         else:
             symbol = 'o'
-        ax.scatter(point[0], point[1], point[2], marker=symbol)
+            color = '#7fdcfa'
+        ax.scatter(point[0], point[1], point[2], marker=symbol, color=color)
 
     ax.set_xlabel('X')
     ax.set_ylabel('Y')
