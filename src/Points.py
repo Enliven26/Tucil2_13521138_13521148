@@ -1,4 +1,5 @@
 import math
+from numpy import random
 
 def getDistance(point1, point2):
     # mengembalikan jarak euclidean dua titik N dimensi
@@ -33,19 +34,25 @@ def isInRange(point1, point2, minDistance):
     
     return True
 
+def generateRandomPoints(length, dimension = 3, lowerBound = -1e6, upperBound = 1e6):
+    points = [random.uniform(low=lowerBound, high=upperBound, size=(dimension)).tolist() for i in range(length)]
+
+    return points
+
+
 def merge(points, left, mid, right, startingElementIndex):
     # menggabungkan dua list titik N dimensi yang sudah terurut
     # startingElementIndex menjadi acuan perbandingan dua buah titik
     leftLimit = mid - left + 1
     rightLimit = right - mid
 
-    leftPoints = [points[i] for i in range(leftLimit)]
+    leftPoints = [points[i] for i in range(left, mid + 1)]
 
-    rightPoints = [points[i] for i in range(mid, right)]
+    rightPoints = [points[i] for i in range(mid + 1, right + 1)]
     
     i = 0
     j = 0
-    k = 0
+    k = left
 
     while (i < leftLimit and j < rightLimit):
         if (isSmaller(leftPoints[i], rightPoints[j], startingElementIndex)):
@@ -68,14 +75,19 @@ def merge(points, left, mid, right, startingElementIndex):
         j += 1
         k += 1
  
-def mergeSort(points, left, right, startingElementIndex = 0):
+def mergeSort(points, left, right, startingElementIndex):
 
     # mengurutkan list titik dengan algoritma merge sort
 
-    if left < right:
+    if (left >= right):
+        return
 
-        mid = (left + right) // 2
- 
-        mergeSort(points, left, mid)
-        mergeSort(points, mid, right)
-        merge(points, left, mid, right, startingElementIndex)
+    mid = (left + right) // 2
+
+    mergeSort(points, left, mid, startingElementIndex)
+    mergeSort(points, mid + 1, right, startingElementIndex)
+    merge(points, left, mid, right, startingElementIndex)
+
+def sort(points, startingElementIndex = 0):
+    # mengurutkan list of points
+    mergeSort(points, 0, len(points) - 1, startingElementIndex)
