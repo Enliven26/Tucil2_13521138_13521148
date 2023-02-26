@@ -1,5 +1,3 @@
-import math
-import numpy
 import Points as p
 
     
@@ -26,7 +24,7 @@ def findNearestMid(points, mid, minDistance):
     midPoint = points[mid]
     midPoints = []
 
-    result = (float("inf"), [])
+    result = (minDistance, [])
 
     for point in points:
         if (abs(point[0] - midPoint[0]) < minDistance):
@@ -37,6 +35,7 @@ def findNearestMid(points, mid, minDistance):
     size = len(midPoints)
     for i in range(size - 1):
         for j in range(i + 1, size):
+
             if (abs(midPoints[i][0] - midPoints[j][0]) >= minDistance):
                 continue
 
@@ -45,23 +44,24 @@ def findNearestMid(points, mid, minDistance):
             
             tempDistance = p.getDistance(midPoints[i], midPoints[j])
 
-            if (tempDistance < minDistance):
+            if (tempDistance < result[0]):
                 result = (tempDistance, [midPoints[i], midPoints[j]])
     
     return result
 
-def findNearestPair(points):
+def findNearestPairDNC(points):
     # mengembalikan tuple berupa (minDistance, Pair) untuk pasangan titik terdekat dengan pendekatan divide and conquer
-
     if (len(points) <= 3):
+
         return findNearestPairBF(points)
     
     mid = len(points) // 2
 
-    result1 = findNearestPair(points[0:mid])
-    result2 = findNearestPair(points[mid:])
+    result1 = findNearestPairDNC(points[0:mid])
 
-    finalResult = (0, [])
+    result2 = findNearestPairDNC(points[mid:])
+
+    finalResult = (float("inf"), [])
 
     if (result1[0] <= result2[0]):
         finalResult = result1
@@ -75,5 +75,13 @@ def findNearestPair(points):
         finalResult = result3
 
     return finalResult
+
+def findNearestPair(points, method = 0):
+    # return nearest pair with Divide and Conquer if method == 0 and Brute Force if method == 1
+    p.counter.reset()
+
+    if (method == 0):
+        return findNearestPairDNC(points)
     
+    return findNearestPairBF(points)
 

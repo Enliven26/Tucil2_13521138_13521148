@@ -1,9 +1,22 @@
 import math
 from numpy import random
 
+class Counter:
+    def __init__(self):
+        self.count = 0
+
+    def reset(self):
+        self.count = 0
+
+    def inc(self):
+        self.count += 1
+
+counter = Counter()
+
 def getDistance(point1, point2):
     # mengembalikan jarak euclidean dua titik N dimensi
     result = 0
+    counter.inc()
 
     for i in range(len(point1)):
         result += pow ((point1[i] - point2[i]), 2)
