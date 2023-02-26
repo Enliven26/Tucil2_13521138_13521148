@@ -32,7 +32,7 @@ def findNearestMid(points, mid, minDistance):
         if (abs(point[0] - midPoint[0]) < minDistance):
             midPoints.append(point)
 
-    p.mergeSort(midPoints, 1)
+    p.sort(midPoints, 1)
 
     size = len(midPoints)
     for i in range(size - 1):
@@ -40,14 +40,13 @@ def findNearestMid(points, mid, minDistance):
             if (abs(midPoints[i][0] - midPoints[j][0]) >= minDistance):
                 continue
 
-            if (not(p.isInRange(midPoints[i], midPoints[j]))):
+            if (not(p.isInRange(midPoints[i], midPoints[j], minDistance))):
                 break
             
             tempDistance = p.getDistance(midPoints[i], midPoints[j])
 
             if (tempDistance < minDistance):
-                result[0] = tempDistance
-                result[1] = [midPoints[i], midPoints[j]]
+                result = (tempDistance, [midPoints[i], midPoints[j]])
     
     return result
 
