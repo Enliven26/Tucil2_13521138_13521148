@@ -25,18 +25,11 @@ def findNearestMid(points, mid, minDistance):
 
     if (len(points[0]) == 1):
         leftValue = (minDistance, [])
-        rightValue = (minDistance, [])
 
         if (mid > 0):
             leftValue = (abs(points[mid][0] - points[mid-1][0]), points[mid-1])
-        
-        if (mid < len(points) - 1):
-            rightValue = (abs(points[mid+1][0] - points[mid-1][0]), points[mid+1])
 
-        if (leftValue[0] < minDistance):
-            return leftValue
-        
-        return rightValue
+        return leftValue
 
 
     midPoint = points[mid]
