@@ -4,7 +4,7 @@ Nearest Points is a program that find a pair of points with closest Euclidean di
 ## Requirements
 1. Python Installation
 2. Matplotlib installation:
-  `python -m pip install -U pip
+  `python -m pip install -U pip <br />
   python -m pip install -U matplotlib`
 
 ## How To Run?
@@ -14,13 +14,13 @@ Nearest Points is a program that find a pair of points with closest Euclidean di
 4. Run main.py with  `python main.py`
 
 ## About Author 1
-Name : Johann Christian Kandani
-NIM : 13521138
+Name : Johann Christian Kandani <br />
+NIM : 13521138 <br />
 Class : K02 IF2211 Strategi Algoritma
 
 ## About Author 2
-Name : Johanes Lee
-NIM : 13521148
+Name : Johanes Lee <br />
+NIM : 13521148 <br />
 Class : K02 IF2211 Strategi Algoritma
 
 ## Notes
