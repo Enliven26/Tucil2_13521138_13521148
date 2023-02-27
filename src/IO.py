@@ -60,6 +60,48 @@ def initPointsInput():
     return n, dimension
 # end function
 
+def fileToPoints():
+    filename = input("Input file path (relative to main.py): ")
+
+    try:
+        f = open(filename, "r")
+    except FileNotFoundError:
+        print("File not found.")
+        return None
+
+    tempIn = f.readline()
+    pointsInfo = intInput(parseIn=tempIn, n=2)
+
+    if(pointsInfo == None):
+        print("File format does not follow input format.")
+        return None
+    else:
+        # Validate number of points
+        n = pointsInfo[0]
+        if(n < 2):
+            print("Number of points must be >= 2.")
+            return None
+        
+        # Validate dimension value
+        dim = pointsInfo[1]
+        if(dim < 1):
+            print("Points dimension cannot be lower than 1.")
+            return None
+
+    points = [None for _ in range(n)]
+
+    for i in range(n):
+        tempIn = f.readline()
+        tempVal = realInput(parseIn=tempIn,n=dim)
+        if(tempVal == None):
+            print(f"invalid point value input at line {i+2}.")
+            return None
+        else:
+            points[i] = tempVal
+
+    f.close()
+    return n, dim, points
+# end function
 
 def intInput(parseIn = None, n = 1, minRange = None, maxRange = None):
     # check parse parameter
