@@ -93,6 +93,7 @@ def findNearestPair(points, method = 0):
     p.counter.reset()
 
     if (method == 0):
+        p.sort(points)
         return findNearestPairDNC(points)
     
     return findNearestPairBF(points)
