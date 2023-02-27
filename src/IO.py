@@ -220,6 +220,11 @@ def plot3DPoints(Points, Point1, Point2):
     ax.set_zlabel('Z')
 
     plt.show()
+
+def fixFileFormat(fileName):
+    
+    return fileName.split('.', 1)[0] + ".txt"
+
 # end function
 
 
@@ -244,3 +249,7 @@ def plot2DPoints(Points, Point1, Point2):
 
     plt.show()
 # end function
+
+def fixFileFormat(fileName):
+    
+    return fileName.split('.', 1)[0] + ".txt"
