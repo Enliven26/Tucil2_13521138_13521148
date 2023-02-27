@@ -14,14 +14,14 @@ Nearest Points is a program that find a pair of points with closest Euclidean di
 4. Run main.py with  `python main.py`
 
 ## About Author 1
-Name = Johann Christian Kandani
-NIM = 13521138
-Class = K02 IF2211 Strategi Algoritma
+Name : Johann Christian Kandani
+NIM : 13521138
+Class : K02 IF2211 Strategi Algoritma
 
 ## About Author 2
-Name = Johanes Lee
-NIM = 13521148
-Class = K02 IF2211 Strategi Algoritma
+Name : Johanes Lee
+NIM : 13521148
+Class : K02 IF2211 Strategi Algoritma
 
 ## Notes
 Input files in "test" folder will always have .txt extension.
