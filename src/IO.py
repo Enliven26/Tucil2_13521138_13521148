@@ -15,53 +15,145 @@ def welcome():
     print("Welcome to nearest points calculator!\n")
     print("\n")
 
-def showChoices(choices, label = ''):
-
+def getChoices(choices, label = 'option', cancelOpt = False):
     print("Select", label, ": ")
 
-    for i in range(len(choices)):
-        print('[' + str(i+1) + ']', choices[i])          
+    optRange = len(choices)
+    for i in range(optRange):
+        print('[' + str(i+1) + ']', choices[i])
+
+    # include additional option to return to previous menu
+    if(cancelOpt):
+        optRange += 1
+        print(f'[{optRange}] Return')
 
     print("\n")
 
-def getChoices():
-    return int(input('Your input : ', end = ''))
+    while(True):
+        print('Your input : ', end='')
+        userOpt = intInput()
 
-def realInput(n = 1):
-    uIn = list(input().split())
-    # validate input amount
-    if(len(uIn) != n):
-        print(f"Mohon input berupa {n} buah angka bulat!\n")
-        return None
-    else:
-        # validate input(s) type
-        for i in range(0, n):
-            try:
-                uIn[i] = int(uIn[i])
-            except ValueError:
-                print(f"Mohon input bertipe bilangan bulat! (masukan invalid pertama pada posisi {i+1})\n")
-                return None
-        # if all input(s) valid, return list of numbers
-        return uIn
+        if(userOpt != None):
+            if(1 <= userOpt and userOpt <= optRange):
+                break
+        else:
+            print(f'Input must be in range of [1-{optRange}]!\n')
+            # optRange = 1 not handled, why even use when only 1 option is available?
+
+    return userOpt
 # end function
 
 
-def realInput(n = 1):
-    uIn = list(input().split())
+def initPointsInput():
+    while(True):
+        print("Input number of points: ", end='')
+        n = intInput(minRange=2)
+        if(n != None):
+            break
+
+    while(True):
+        print("Input dimensions: ", end='')
+        dimension = intInput(minRange=1)
+        if(dimension != None):
+            break
+    
+    return n, dimension
+# end function
+
+
+def intInput(parseIn = None, n = 1, minRange = None, maxRange = None):
+    # check parse parameter
+    if (isinstance(parseIn, str)):
+        parseList = list(parseIn.split())
+
+    elif (isinstance(parseIn, list)):
+        parseList = parseIn
+
+    elif (parseIn == None):
+        parseList = input().split()
+
+    else:
+        return None
+
     # validate input amount
-    if(len(uIn) != n):
-        print(f"Mohon input berupa {n} buah angka!\n")
+    if(len(parseList) != n):
+        print(f"Input must consist(s) of {n} integers!")
         return None
     else:
         # validate input(s) type
         for i in range(0, n):
             try:
-                uIn[i] = float(uIn[i])
+                parseList[i] = int(parseList[i])
             except ValueError:
-                print(f"Mohon input bertipe bilangan! (masukan invalid pertama pada posisi {i+1})\n")
+                print(f"Input type must only be integers! (Caught invalid input at position {i+1})")
                 return None
+        
+        # Validate value(s) range if specified
+        if(minRange != None): # validate min value
+            for num in parseList:
+                if(num < minRange):
+                    print(f"Input value(s) must be >= {minRange}!")
+                    return None
+        
+        if(maxRange != None): # validate max value
+            for num in parseList:
+                if(num > maxRange):
+                    print(f"Input value(s) must be <= {minRange}!")
+                    return None
+                
         # if all input(s) valid, return list of numbers
-        return uIn
+        if(n == 1):
+            return parseList[0]
+        else:
+            return parseList
+# end function
+
+
+def realInput(parseIn = None, n = 1, minRange = None, maxRange = None):
+    # check parse parameter
+    if (isinstance(parseIn, str)):
+        parseList = list(parseIn.split())
+
+    elif (isinstance(parseIn, list)):
+        parseList = parseIn
+
+    elif (parseIn == None):
+        parseList = input().split()
+
+    else:
+        return None
+
+    # validate input amount
+    if(len(parseList) != n):
+        print(f"Input must consist(s) of {n} real numbers!")
+        return None
+    else:
+        # validate input(s) type
+        for i in range(0, n):
+            try:
+                parseList[i] = float(parseList[i])
+            except ValueError:
+                print(f"Input type must only be real numbers! (Caught invalid input at position {i+1})")
+                return None
+        
+        # Validate value(s) range if specified
+        if(minRange != None): # validate min value
+            for num in parseList:
+                if(num < minRange):
+                    print(f"Input value(s) must be >= {minRange}!")
+                    return None
+        
+        if(maxRange != None): # validate max value
+            for num in parseList:
+                if(num > maxRange):
+                    print(f"Input value(s) must be <= {minRange}!")
+                    return None
+                
+        # if all input(s) valid, return list of numbers
+        if(n == 1):
+            return parseList[0]
+        else:
+            return parseList
 # end function
 
 
@@ -87,6 +179,7 @@ def plot3DPoints(Points, Point1, Point2):
 
     plt.show()
 # end function
+
 
 def plot2DPoints(Points, Point1, Point2):
     # fig = plt.figure()
