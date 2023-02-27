@@ -14,15 +14,24 @@ def welcome():
     print("\n")
     print("Welcome to nearest points calculator!")
 
-def inputFormatInfo(pointInfo):
+def inputFormatInfo(mode):
     print("\n-----------------------------------------------------------------------------------------------")
     print("Input format:")
-    print("N  D                          {N is the number of points, and D is the dimension of the points}")
-    print("\n\nPoints input must follow the format:")
-    print("X1_1 X1_2 X1_3 ... X1_D")
-    print("X2_1 X2_2 X2_3 ... X2_D")
-    print("...")
-    print("XN_1 XN_2 XN_3 ... XN_D       {where Xi_j represents the value of i-th point in j-th dimension}")
+    
+    if (mode == 3):
+        print("N  D                          {N is the number of points, and D is the dimension of the points}")
+    
+    else:
+        print("N                             {N is the number of points}")
+        print("D                             {D is the dimension of the points}")
+    
+    if (mode != 2):
+        print("\nPoints input must follow the format:")
+        print("X1_1 X1_2 X1_3 ... X1_D")
+        print("X2_1 X2_2 X2_3 ... X2_D")
+        print("...")
+        print("XN_1 XN_2 XN_3 ... XN_D       {where Xi_j represents the value of i-th point in j-th dimension}")
+    
     print("-----------------------------------------------------------------------------------------------\n")
 # end function
 
@@ -72,10 +81,10 @@ def initPointsInput():
 # end function
 
 def fileToPoints():
-    filename = input("Input file path (relative to main.py): ")
+    filename = fixFileFormat(input("Input file path (relative to test folder): "))
 
     try:
-        f = open(filename, "r")
+        f = open("./test/" + filename, "r")
     except FileNotFoundError:
         print("File not found.")
         return None
@@ -229,7 +238,7 @@ def plot3DPoints(Points, Point1, Point2):
     ax.set_xlabel('X')
     ax.set_ylabel('Y')
     ax.set_zlabel('Z')
-
+    print("\n[Waiting the plot to be closed]")
     plt.show()
 # end function
 
@@ -252,7 +261,7 @@ def plot2DPoints(Points, Point1, Point2):
 
     plt.xlabel('X')
     plt.ylabel('Y')
-
+    print("\n[Waiting the plot to be closed]\n")
     plt.show()
 # end function
 

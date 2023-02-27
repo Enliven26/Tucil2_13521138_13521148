@@ -20,14 +20,18 @@ while(True):
 		if(choice == 4): # user chose return
 			continue
 	
-		IO.inputFormatInfo()
+		IO.inputFormatInfo(choice)
 
 		if (choice == 1):
 			n, dim = IO.initPointsInput()
 			points = [None for _ in range(n)]
 			i = 0
+
+			print("Input Points")
 			while(i < n):
+				
 				while(True):
+					print("Point", i+1, ": ", end="")
 					tempIn = IO.realInput(n=dim)
 					if(tempIn != None):
 						break
@@ -76,6 +80,7 @@ while(True):
 			print('Brute Force getDistance() calls count :', p.counter.count)
 			print('Brute Force execution time:', (end - start) * (10 ** 3), 'ms')
 			print(f"Closest points distance = {BFresult[0]}")
+			
 			if(dim == 3):
 				IO.plot3DPoints(points, BFresult[1][0], BFresult[1][1])
 			elif(dim == 2):
