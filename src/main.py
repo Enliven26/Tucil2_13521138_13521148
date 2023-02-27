@@ -62,9 +62,8 @@ while(True):
 
 			print('Divide and Conquer getDistance() calls count :', p.counter.count)
 			print('Divide and Conquer execution time:', (end - start) * (10 ** 3), 'ms')
-			print('\n')
+			print(f"Closest points distance = {DNCresult[0]}\n")
 
-			print(f"Closest points distance = {DNCresult[0]}")
 			if(dim == 3):
 				IO.plot3DPoints(points, DNCresult[1][0], DNCresult[1][1])
 			elif(dim == 2):
@@ -76,8 +75,6 @@ while(True):
 			end = time.time()
 			print('Brute Force getDistance() calls count :', p.counter.count)
 			print('Brute Force execution time:', (end - start) * (10 ** 3), 'ms')
-			print('\n')
-
 			print(f"Closest points distance = {BFresult[0]}")
 			if(dim == 3):
 				IO.plot3DPoints(points, BFresult[1][0], BFresult[1][1])

@@ -1,19 +1,18 @@
 import matplotlib.pyplot as plt
 
 def art():
-    print("\n")
+
     print(" _   _                                _    ______         _         _        ")  
     print("| \ | |                              | |   | ___ \       (_)       | |")
     print("|  \| |  ___   __ _  _ __   ___  ___ | |_  | |_/ /  ___   _  _ __  | |_  ___ ")
     print("| . ` | / _ \ / _` || '__| / _ \/ __|| __| |  __/  / _ \ | || '_ \ | __|/ __|")
     print("| |\  ||  __/| (_| || |   |  __/\__ \| |_  | |    | (_) || || | | || |_ \__ \\")
     print("\_| \_/ \___| \__,_||_|    \___||___/ \__| \_|     \___/ |_||_| |_| \__||___/")
-    print("\n")
+
 
 def welcome():
     print("\n")
-    print("Welcome to nearest points calculator!\n")
-    print("\n")
+    print("Welcome to nearest points calculator!")
 
 def inputFormatInfo():
     print("\n-----------------------------------------------------------------------------------------------")
