@@ -14,10 +14,11 @@ def welcome():
     print("\n")
     print("Welcome to nearest points calculator!")
 
-def inputFormatInfo():
+def inputFormatInfo(pointInfo):
     print("\n-----------------------------------------------------------------------------------------------")
     print("Input format:")
-    print("N D                           {N is the number of points, and D is the dimension of the points}")
+    print("N  D                          {N is the number of points, and D is the dimension of the points}")
+    print("\n\nPoints input must follow the format:")
     print("X1_1 X1_2 X1_3 ... X1_D")
     print("X2_1 X2_2 X2_3 ... X2_D")
     print("...")
@@ -41,7 +42,7 @@ def getChoices(choices, label = 'option', cancelOpt = False):
 
     while(True):
         print('Your input : ', end='')
-        userOpt = intInput()
+        userOpt = intInput(singleVal=True)
 
         if(userOpt != None):
             if(1 <= userOpt and userOpt <= optRange):
@@ -57,13 +58,13 @@ def getChoices(choices, label = 'option', cancelOpt = False):
 def initPointsInput():
     while(True):
         print("Input number of points: ", end='')
-        n = intInput(minRange=2)
+        n = intInput(minRange=2, singleVal=True)
         if(n != None):
             break
 
     while(True):
         print("Input dimensions: ", end='')
-        dimension = intInput(minRange=1)
+        dimension = intInput(minRange=1, singleVal=True)
         if(dimension != None):
             break
     
@@ -113,7 +114,7 @@ def fileToPoints():
     return n, dim, points
 # end function
 
-def intInput(parseIn = None, n = 1, minRange = None, maxRange = None):
+def intInput(parseIn = None, n = 1, minRange = None, maxRange = None, singleVal = False):
     # check parse parameter
     if (isinstance(parseIn, str)):
         parseList = list(parseIn.split())
@@ -154,14 +155,14 @@ def intInput(parseIn = None, n = 1, minRange = None, maxRange = None):
                     return None
                 
         # if all input(s) valid, return list of numbers
-        if(n == 1):
+        if(singleVal):
             return parseList[0]
         else:
             return parseList
 # end function
 
 
-def realInput(parseIn = None, n = 1, minRange = None, maxRange = None):
+def realInput(parseIn = None, n = 1, minRange = None, maxRange = None, singleVal = False):
     # check parse parameter
     if (isinstance(parseIn, str)):
         parseList = list(parseIn.split())
@@ -202,7 +203,7 @@ def realInput(parseIn = None, n = 1, minRange = None, maxRange = None):
                     return None
                 
         # if all input(s) valid, return list of numbers
-        if(n == 1):
+        if(singleVal):
             return parseList[0]
         else:
             return parseList
