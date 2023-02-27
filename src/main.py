@@ -10,19 +10,17 @@ IO.welcome()
 
 while(True):     
 	run = IO.getChoices(['Start', 'Exit'], 'action')
-	
-	print("Input format:")
-	print("N D							\{N is the number of points, and D is the dimension of the points\}")
-	print("X1_1 X1_2 X1_3 ... X1_D")
-	print("X2_1 X2_2 X2_3 ... X2_D")
-	print("...")
-	print("XN_1 XN_2 XN_3 ... XN_D		\{where Xi_j represents the value of i-th point in j-th dimension\}")
 
 	if (run == 1):
 		# # boolean flag to mark input failure
 		# failFlag = False
 
-		choice = IO.getChoices(['Console', 'Random', 'File'], 'input mode')
+		choice = IO.getChoices(['Console', 'Random', 'File'], 'input mode', cancelOpt=True)
+
+		if(choice == 4): # user chose return
+			continue
+	
+		IO.inputFormatInfo()
 
 		if (choice == 1):
 			n, dim = IO.initPointsInput()
@@ -40,7 +38,7 @@ while(True):
 			n, dim = IO.initPointsInput()
 			points = p.generateRandomPoints(n, dim, -1e6, 1e6)
 
-		else:	# choice == 3
+		elif (choice == 3):
 			print("File format follows the input format")
 			temp = IO.fileToPoints()
 			if(temp == None):
@@ -49,6 +47,9 @@ while(True):
 			n = temp[0]
 			dim = temp[1]
 			points = temp[2]
+
+		# else:
+		# 	continue
 
 		# p.sort(points)
 

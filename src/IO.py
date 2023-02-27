@@ -15,8 +15,19 @@ def welcome():
     print("Welcome to nearest points calculator!\n")
     print("\n")
 
+def inputFormatInfo():
+    print("\n-----------------------------------------------------------------------------------------------")
+    print("Input format:")
+    print("N D                           {N is the number of points, and D is the dimension of the points}")
+    print("X1_1 X1_2 X1_3 ... X1_D")
+    print("X2_1 X2_2 X2_3 ... X2_D")
+    print("...")
+    print("XN_1 XN_2 XN_3 ... XN_D       {where Xi_j represents the value of i-th point in j-th dimension}")
+    print("-----------------------------------------------------------------------------------------------\n")
+# end function
+
 def getChoices(choices, label = 'option', cancelOpt = False):
-    print("Select", label, ": ")
+    print("\nSelect", label, ": ")
 
     optRange = len(choices)
     for i in range(optRange):
@@ -27,7 +38,7 @@ def getChoices(choices, label = 'option', cancelOpt = False):
         optRange += 1
         print(f'[{optRange}] Return')
 
-    print("\n")
+    print()
 
     while(True):
         print('Your input : ', end='')
@@ -36,9 +47,9 @@ def getChoices(choices, label = 'option', cancelOpt = False):
         if(userOpt != None):
             if(1 <= userOpt and userOpt <= optRange):
                 break
-        else:
-            print(f'Input must be in range of [1-{optRange}]!\n')
-            # optRange = 1 not handled, why even use when only 1 option is available?
+            else:
+                print(f'Input must be in range of [1-{optRange}]!\n')
+                # optRange = 1 not handled, why even use when only 1 option is available?
 
     return userOpt
 # end function
