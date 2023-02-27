@@ -21,6 +21,24 @@ def findNearestPairBF(points):
 def findNearestMid(points, mid, minDistance):
     # mengembalikan tuple berupa (minDistance, Pair) untuk pasangan titik terdekat yang berada di range tengah
 
+    # kasus 1 dimensi
+
+    if (len(points[0]) == 1):
+        leftValue = (minDistance, [])
+        rightValue = (minDistance, [])
+
+        if (mid > 0):
+            leftValue = (abs(points[mid][0] - points[mid-1][0]), points[mid-1])
+        
+        if (mid < len(points) - 1):
+            rightValue = (abs(points[mid+1][0] - points[mid-1][0]), points[mid+1])
+
+        if (leftValue[0] < minDistance):
+            return leftValue
+        
+        return rightValue
+
+
     midPoint = points[mid]
     midPoints = []
 
@@ -29,6 +47,7 @@ def findNearestMid(points, mid, minDistance):
     for point in points:
         if (abs(point[0] - midPoint[0]) < minDistance):
             midPoints.append(point)
+
 
     p.sort(midPoints, 1)
 
@@ -39,7 +58,7 @@ def findNearestMid(points, mid, minDistance):
             if (abs(midPoints[i][1] - midPoints[j][1]) >= result[0]):
                 break
 
-            if (not(p.isInRange(midPoints[i], midPoints[j], result[0]))): #NEED IMPROVEMENT
+            if (not(p.isInRange(midPoints[i], midPoints[j], result[0]))): 
                 continue
             
             tempDistance = p.getDistance(midPoints[i], midPoints[j])
