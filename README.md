@@ -19,8 +19,8 @@ NIM : 13521138
 Class : K02 IF2211 Strategi Algoritma
 
 ## About Author 2
-Name : Johanes Lee \n
-NIM : 13521148 \n
+Name : Johanes Lee
+NIM : 13521148
 Class : K02 IF2211 Strategi Algoritma
 
 ## Notes
