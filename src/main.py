@@ -58,7 +58,8 @@ while(True):
 		# p.sort(points)
 
 		runMode = IO.getChoices(["Divide and Conquer Algorithm", "Brute-force Algorithm", "Run both algorithm (benchmark)"], "run mode")
-
+		p.sort(points)
+		
 		if(runMode == 1 or runMode == 3):
 			start = time.time()
 			DNCresult = cp.findNearestPair(points)
