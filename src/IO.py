@@ -222,6 +222,26 @@ def realInput(parseIn = None, n = 1, minRange = None, maxRange = None, singleVal
             return parseList
 # end function
 
+def printPoint(point):
+    print("(", end="")
+
+    for i in range(len(point)):
+        print(point[i], end="")
+
+        if (i < len(point) - 1):
+            print(", ", end="")
+
+    print(")", end="")
+
+def printPair(pair):
+    print("Pasangan titik terdekat")
+
+    print("Titik 1 : ", end="")
+    printPoint(pair[0])
+    
+    print("\nTitik 2 : ", end="")
+    printPoint(pair[1])
+    print("\n")
 
 def plot3DPoints(Points, Point1, Point2):
     fig = plt.figure()
@@ -242,7 +262,7 @@ def plot3DPoints(Points, Point1, Point2):
     ax.set_xlabel('X')
     ax.set_ylabel('Y')
     ax.set_zlabel('Z')
-    print("\n[Waiting the plot to be closed]")
+    print("\n[Waiting the plot to be closed]\n")
     plt.show()
 # end function
 
