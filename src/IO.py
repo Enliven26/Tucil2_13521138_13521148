@@ -94,18 +94,21 @@ def fileToPoints():
 
     if(pointsInfo == None):
         print("File format does not follow input format.")
+        f.close()
         return None
     else:
         # Validate number of points
         n = pointsInfo[0]
         if(n < 2):
             print("Number of points must be >= 2.")
+            f.close()
             return None
         
         # Validate dimension value
         dim = pointsInfo[1]
         if(dim < 1):
             print("Points dimension cannot be lower than 1.")
+            f.close()
             return None
 
     points = [None for _ in range(n)]
@@ -115,6 +118,7 @@ def fileToPoints():
         tempVal = realInput(parseIn=tempIn,n=dim)
         if(tempVal == None):
             print(f"invalid point value input at line {i+2}.")
+            f.close()
             return None
         else:
             points[i] = tempVal
